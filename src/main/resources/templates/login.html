@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<main class="auth-shell">
+    <section class="panel auth-panel">
+        <h1>Login</h1>
+        <p class="hint">Demo accounts: admin/admin123, user/user123</p>
+        <p class="message error" th:if="${param.error}">Invalid username or password</p>
+        <p class="message success" th:if="${param.logout}">You have logged out</p>
+        <form th:action="@{/login}" method="post" class="form">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+            <button type="submit">Sign in</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>

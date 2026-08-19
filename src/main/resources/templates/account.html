@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Account</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<main class="shell">
+    <nav class="topbar">
+        <a th:href="@{/account}">Account</a>
+        <a th:href="@{/algorithms}">Algorithms</a>
+        <a th:href="@{/password}">Change password</a>
+        <a th:href="@{/admin/users}">Admin</a>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </nav>
+
+    <section class="panel">
+        <p class="message success" th:if="${success}" th:text="${success}"></p>
+        <h1>Account information</h1>
+        <dl>
+            <dt>Username</dt>
+            <dd th:text="${user.username}">username</dd>
+            <dt>Full name</dt>
+            <dd th:text="${user.fullName}">full name</dd>
+            <dt>Role</dt>
+            <dd th:text="${user.role}">role</dd>
+        </dl>
+    </section>
+</main>
+</body>
+</html>

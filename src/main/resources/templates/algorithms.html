@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cau truc du lieu va giai thuat</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<main class="shell">
+    <nav class="topbar">
+        <a th:href="@{/account}">Account</a>
+        <a th:href="@{/algorithms}">Algorithms</a>
+        <a th:href="@{/password}">Change password</a>
+        <a th:href="@{/admin/users}">Admin</a>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </nav>
+
+    <section class="panel">
+        <h1>Phan 1: Cau truc du lieu va giai thuat</h1>
+        <p class="hint">
+            Code nam o package <code>com.example.interview.algorithm</code>,
+            test nam o <code>AlgorithmPracticeTests</code>.
+        </p>
+    </section>
+
+    <section class="panel stack">
+        <h2>Bai 1: Merge hai mang da sap xep</h2>
+        <p><strong>Input:</strong> <span th:text="${mergeInput}"></span></p>
+        <p><strong>Output:</strong> <span th:text="${mergeOutput}"></span></p>
+        <p><strong>Nang cao - merge vao A:</strong> <span th:text="${mergeInPlaceOutput}"></span></p>
+        <pre><code>while i va j con phan tu:
+    lay phan tu nho hon dua vao ket qua
+copy phan con lai cua mang chua het</code></pre>
+    </section>
+
+    <section class="panel stack">
+        <h2>Bai 2: Mua day ban dinh</h2>
+        <p><strong>Mot lan mua ban:</strong> loi nhuan toi da = <span th:text="${oneProfit}"></span></p>
+        <p><strong>Nhieu lan mua ban:</strong> loi nhuan toi da = <span th:text="${manyProfit}"></span></p>
+        <pre><code>Mot giao dich:
+    luu gia nho nhat da gap
+    cap nhat profit = max(profit, gia_hom_nay - gia_nho_nhat)</code></pre>
+    </section>
+
+    <section class="panel stack">
+        <h2>Bai 3: Tim 2 hoac 3 phan tu co tong bang k</h2>
+        <p><strong>Two sum sorted, k = 6:</strong> <span th:text="${twoSum}"></span></p>
+        <p><strong>Three sum sorted, k = 10:</strong> <span th:text="${threeSum}"></span></p>
+        <pre><code>Two sum:
+    left = dau mang, right = cuoi mang
+    tong nho hon k thi left++
+    tong lon hon k thi right--</code></pre>
+    </section>
+
+    <section class="panel stack">
+        <h2>Bai 4: Palindrome</h2>
+        <p><strong>radar:</strong> <span th:text="${radarPalindrome}"></span></p>
+        <p><strong>hello:</strong> <span th:text="${helloPalindrome}"></span></p>
+        <p><strong>Dem chuoi con doi xung cua "aaa":</strong> <span th:text="${palindromeCount}"></span></p>
+        <pre><code>Kiem tra palindrome:
+    so sanh 2 dau chuoi
+    neu khac nhau thi false
+    tien dan vao giua den khi xong</code></pre>
+    </section>
+</main>
+</body>
+</html>

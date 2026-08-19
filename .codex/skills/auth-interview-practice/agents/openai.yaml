@@ -1,0 +1,4 @@
+interface:
+  display_name: "Auth Interview Practice"
+  short_description: "Guide this Spring Boot auth practice app."
+  default_prompt: "Use $auth-interview-practice to implement or explain the Spring Boot authentication practice project."
