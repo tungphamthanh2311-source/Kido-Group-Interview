@@ -15,6 +15,10 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
+    // Cau hinh rule bao ve URL:
+    // - /login va file CSS cho phep truy cap tu do
+    // - /admin/** chi danh cho role ADMIN
+    // - cac trang con lai bat buoc phai dang nhap
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -32,6 +36,8 @@ public class SecurityConfig {
                 .build();
     }
 
+    // Spring Security goi bean nay khi dang nhap de load user tu database.
+    // Role ADMIN/USER duoc chuyen thanh authority ROLE_ADMIN/ROLE_USER.
     @Bean
     UserDetailsService userDetailsService(AppUserRepository users) {
         return username -> {
@@ -44,6 +50,7 @@ public class SecurityConfig {
         };
     }
 
+    // BCrypt tao hash co salt, phu hop cho demo authentication co database.
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

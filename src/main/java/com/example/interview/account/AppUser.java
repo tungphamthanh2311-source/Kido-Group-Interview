@@ -13,6 +13,7 @@ import jakarta.persistence.Table;
 @Table(name = "app_users")
 public class AppUser {
 
+    // Entity dai dien cho bang app_users trong database H2.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,6 +27,7 @@ public class AppUser {
     @Column(nullable = false, length = 100)
     private String fullName;
 
+    // Luu role dang enum de tranh nhap sai chuoi role trong code.
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private Role role;

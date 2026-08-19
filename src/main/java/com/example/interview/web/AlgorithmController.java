@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AlgorithmController {
 
+    // Trang nay lay vi du mau, goi cac ham algorithm va day ket qua sang Thymeleaf de hien thi.
     @GetMapping("/algorithms")
     public String algorithms(Model model) {
         int[] first = {1, 3, 5};
         int[] second = {2, 4, 6};
         int[] mergeTarget = {1, 3, 5, 0, 0, 0};
+
+        // Goi ban nang cao: merge truc tiep vao mang A co san o trong.
         AlgorithmPractice.mergeIntoFirstArray(mergeTarget, 3, second, 3);
 
         int[] prices = {7, 1, 5, 3, 6, 4};

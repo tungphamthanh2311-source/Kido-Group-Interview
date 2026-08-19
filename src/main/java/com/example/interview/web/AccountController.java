@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class AccountController {
 
+    // Controller chi xu ly request/response; logic user nam trong UserService.
     private final UserService userService;
 
     public AccountController(UserService userService) {
@@ -29,6 +30,7 @@ public class AccountController {
         return "redirect:/account";
     }
 
+    // Principal la user dang dang nhap do Spring Security gan vao request.
     @GetMapping("/account")
     public String account(Model model, Principal principal) {
         AppUser user = userService.findByUsername(principal.getName());
@@ -48,6 +50,7 @@ public class AccountController {
             BindingResult bindingResult,
             Principal principal,
             RedirectAttributes redirectAttributes) {
+        // Validation custom: password moi va password xac nhan phai trung nhau.
         if (!form.getNewPassword().equals(form.getConfirmPassword())) {
             bindingResult.rejectValue("confirmPassword", "password.mismatch", "Passwords do not match");
         }
@@ -61,6 +64,7 @@ public class AccountController {
                 form.getCurrentPassword(),
                 form.getNewPassword());
 
+        // Neu password hien tai sai thi khong doi password va tra ve form cu.
         if (!changed) {
             bindingResult.rejectValue("currentPassword", "password.current.invalid", "Current password is incorrect");
             return "password";
@@ -70,6 +74,7 @@ public class AccountController {
         return "redirect:/account";
     }
 
+    // Form bean can constructor rong + getter/setter de Thymeleaf bind du lieu input.
     public static class PasswordChangeForm {
 
         @NotBlank
