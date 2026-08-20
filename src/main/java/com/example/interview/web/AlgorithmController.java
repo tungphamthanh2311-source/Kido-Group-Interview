@@ -27,8 +27,11 @@ public class AlgorithmController {
         model.addAttribute("mergeInput", "A = " + Arrays.toString(first) + ", B = " + Arrays.toString(second));
         model.addAttribute("mergeOutput", AlgorithmPractice.format(AlgorithmPractice.mergeSortedArrays(first, second)));
         model.addAttribute("mergeInPlaceOutput", AlgorithmPractice.format(mergeTarget));
+        model.addAttribute("pricesInput", Arrays.toString(prices));
         model.addAttribute("oneProfit", AlgorithmPractice.maxProfitOneTransaction(prices));
         model.addAttribute("manyProfit", AlgorithmPractice.maxProfitManyTransactions(prices));
+        model.addAttribute("numbersInput", Arrays.toString(numbers));
+        model.addAttribute("tripleNumbersInput", Arrays.toString(tripleNumbers));
         model.addAttribute("twoSum", AlgorithmPractice.format(AlgorithmPractice.twoSumSorted(numbers, 6)));
         model.addAttribute("threeSum", AlgorithmPractice.formatTriples(AlgorithmPractice.threeSumSorted(tripleNumbers, 10)));
         model.addAttribute("radarPalindrome", AlgorithmPractice.isPalindrome("radar"));

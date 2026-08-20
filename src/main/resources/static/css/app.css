@@ -100,6 +100,84 @@ td {
     margin-top: 10px;
 }
 
+.eyebrow {
+    margin: 0 0 8px;
+    color: #1f6feb;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-heading h2 {
+    margin: 0;
+}
+
+.badge {
+    flex: 0 0 auto;
+    border-radius: 999px;
+    padding: 5px 10px;
+    color: #fff;
+    background: #1f6feb;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.problem-grid h3,
+.result-box h3 {
+    margin-bottom: 8px;
+}
+
+.complexity {
+    color: #44546a;
+}
+
+.result-box {
+    border-left: 4px solid #1f6feb;
+    border-radius: 6px;
+    padding: 14px 18px;
+    background: #f0f6ff;
+}
+
+.result-box p {
+    margin: 8px 0;
+}
+
+.result-explanation {
+    color: #44546a;
+}
+
+.calculation-list {
+    margin: 8px 0 0;
+    padding-left: 22px;
+}
+
+.calculation-list li + li {
+    margin-top: 5px;
+}
+
+@media (max-width: 680px) {
+    .problem-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+    }
+}
+
 .auth-panel {
     width: min(420px, 100%);
 }

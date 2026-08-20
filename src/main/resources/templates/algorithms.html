@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cau truc du lieu va giai thuat</title>
+    <title>Cấu trúc dữ liệu và giải thuật</title>
     <link rel="stylesheet" th:href="@{/css/app.css}">
 </head>
 <body>
@@ -19,51 +19,144 @@
     </nav>
 
     <section class="panel">
-        <h1>Phan 1: Cau truc du lieu va giai thuat</h1>
+        <p class="eyebrow">INTERVIEW PRACTICE</p>
+        <h1>Cấu trúc dữ liệu và giải thuật</h1>
         <p class="hint">
-            Code nam o package <code>com.example.interview.algorithm</code>,
-            test nam o <code>AlgorithmPracticeTests</code>.
+            Trang này trình bày đề bài, dữ liệu mẫu, cách giải và kết quả thực tế được gọi từ
+            <code>AlgorithmPractice</code>. Test tự động nằm trong <code>AlgorithmPracticeTests</code>.
         </p>
     </section>
 
     <section class="panel stack">
-        <h2>Bai 1: Merge hai mang da sap xep</h2>
-        <p><strong>Input:</strong> <span th:text="${mergeInput}"></span></p>
-        <p><strong>Output:</strong> <span th:text="${mergeOutput}"></span></p>
-        <p><strong>Nang cao - merge vao A:</strong> <span th:text="${mergeInPlaceOutput}"></span></p>
-        <pre><code>while i va j con phan tu:
-    lay phan tu nho hon dua vao ket qua
-copy phan con lai cua mang chua het</code></pre>
+        <div class="section-heading">
+            <span class="badge">Bài 1</span>
+            <h2>Trộn hai mảng đã sắp xếp</h2>
+        </div>
+        <div class="problem-grid">
+            <div>
+                <h3>Đề bài</h3>
+                <p>Cho hai mảng số nguyên đã được sắp xếp tăng dần. Hãy trộn chúng thành một mảng mới
+                    vẫn tăng dần.</p>
+                <p><strong>Nâng cao:</strong> Mảng A có đủ vùng trống ở cuối. Trộn B trực tiếp vào A,
+                    không tạo thêm mảng kết quả.</p>
+            </div>
+            <div>
+                <h3>Ý tưởng</h3>
+                <p>Dùng hai con trỏ để luôn chọn phần tử nhỏ hơn. Với bản in-place, đi từ cuối về đầu
+                    để không ghi đè phần tử của A chưa xử lý.</p>
+                <p class="complexity"><strong>Độ phức tạp:</strong> O(m + n) thời gian; O(m + n) bộ nhớ
+                    cho bản thường và O(1) cho bản in-place.</p>
+            </div>
+        </div>
+        <div class="result-box">
+            <h3>Kết quả chạy mẫu</h3>
+            <p><strong>Input:</strong> <code th:text="${mergeInput}"></code></p>
+            <p><strong>Mảng mới:</strong> <code th:text="${mergeOutput}"></code></p>
+            <p><strong>Merge trực tiếp vào A:</strong> <code th:text="${mergeInPlaceOutput}"></code></p>
+            <p class="result-explanation">Lần lượt chọn 1 từ A, 2 từ B, 3 từ A... nên kết quả cuối
+                cùng là [1, 2, 3, 4, 5, 6].</p>
+        </div>
     </section>
 
     <section class="panel stack">
-        <h2>Bai 2: Mua day ban dinh</h2>
-        <p><strong>Mot lan mua ban:</strong> loi nhuan toi da = <span th:text="${oneProfit}"></span></p>
-        <p><strong>Nhieu lan mua ban:</strong> loi nhuan toi da = <span th:text="${manyProfit}"></span></p>
-        <pre><code>Mot giao dich:
-    luu gia nho nhat da gap
-    cap nhat profit = max(profit, gia_hom_nay - gia_nho_nhat)</code></pre>
+        <div class="section-heading">
+            <span class="badge">Bài 2</span>
+            <h2>Tối đa hóa lợi nhuận mua bán</h2>
+        </div>
+        <div class="problem-grid">
+            <div>
+                <h3>Đề bài</h3>
+                <p>Mỗi phần tử là giá vàng của một ngày. Tìm lợi nhuận lớn nhất khi phải mua trước
+                    rồi mới bán.</p>
+                <p><strong>Phiên bản 1:</strong> Chỉ được thực hiện một giao dịch mua–bán.</p>
+                <p><strong>Phiên bản 2:</strong> Được giao dịch nhiều lần nhưng tại một thời điểm chỉ giữ
+                    một đơn vị vàng.</p>
+            </div>
+            <div>
+                <h3>Ý tưởng</h3>
+                <p>Một giao dịch: lưu giá thấp nhất đã gặp. Nhiều giao dịch: cộng mọi đoạn tăng giá
+                    giữa hai ngày liên tiếp.</p>
+                <p class="complexity"><strong>Độ phức tạp:</strong> O(n) thời gian và O(1) bộ nhớ.</p>
+            </div>
+        </div>
+        <div class="result-box">
+            <h3>Kết quả chạy mẫu</h3>
+            <p><strong>Giá theo ngày:</strong> <code th:text="${pricesInput}"></code></p>
+            <p><strong>Một giao dịch:</strong> mua ngày 2 với giá 1, bán ngày 5 với giá 6 ⇒ lợi nhuận
+                <strong th:text="${oneProfit}"></strong> (= 6 − 1).</p>
+            <p><strong>Nhiều giao dịch:</strong> (5 − 1) + (6 − 3) ⇒ lợi nhuận
+                <strong th:text="${manyProfit}"></strong>.</p>
+        </div>
     </section>
 
     <section class="panel stack">
-        <h2>Bai 3: Tim 2 hoac 3 phan tu co tong bang k</h2>
-        <p><strong>Two sum sorted, k = 6:</strong> <span th:text="${twoSum}"></span></p>
-        <p><strong>Three sum sorted, k = 10:</strong> <span th:text="${threeSum}"></span></p>
-        <pre><code>Two sum:
-    left = dau mang, right = cuoi mang
-    tong nho hon k thi left++
-    tong lon hon k thi right--</code></pre>
+        <div class="section-heading">
+            <span class="badge">Bài 3</span>
+            <h2>Tìm hai hoặc ba phần tử có tổng bằng K</h2>
+        </div>
+        <div class="problem-grid">
+            <div>
+                <h3>Đề bài</h3>
+                <p>Cho mảng tăng dần và số nguyên K. Tìm một cặp có tổng bằng K. Ở phiên bản nâng cao,
+                    tìm tất cả bộ ba duy nhất có tổng bằng K.</p>
+                <p>Nếu không tồn tại cặp phù hợp, Two Sum trả về mảng rỗng.</p>
+            </div>
+            <div>
+                <h3>Ý tưởng</h3>
+                <p>Đặt hai con trỏ ở hai đầu. Tổng nhỏ hơn K thì tăng con trỏ trái; tổng lớn hơn K thì
+                    giảm con trỏ phải. Three Sum cố định một số rồi giải Two Sum trên phần còn lại.</p>
+                <p class="complexity"><strong>Độ phức tạp:</strong> Two Sum O(n); Three Sum O(n²), bộ nhớ
+                    phụ O(1) chưa tính kết quả.</p>
+            </div>
+        </div>
+        <div class="result-box">
+            <h3>Kết quả chạy mẫu</h3>
+            <p><strong>Two Sum:</strong> mảng <code th:text="${numbersInput}"></code>, K = 6</p>
+            <p>Cặp tìm được: <code th:text="${twoSum}"></code>, vì <strong>2 + 4 = 6</strong>.</p>
+            <p><strong>Three Sum:</strong> mảng <code th:text="${tripleNumbersInput}"></code>, K = 10</p>
+            <p>Các bộ ba duy nhất: <code th:text="${threeSum}"></code>.</p>
+            <ul class="calculation-list">
+                <li>1 + 3 + 6 = 10</li>
+                <li>1 + 4 + 5 = 10</li>
+                <li>2 + 3 + 5 = 10</li>
+            </ul>
+        </div>
     </section>
 
     <section class="panel stack">
-        <h2>Bai 4: Palindrome</h2>
-        <p><strong>radar:</strong> <span th:text="${radarPalindrome}"></span></p>
-        <p><strong>hello:</strong> <span th:text="${helloPalindrome}"></span></p>
-        <p><strong>Dem chuoi con doi xung cua "aaa":</strong> <span th:text="${palindromeCount}"></span></p>
-        <pre><code>Kiem tra palindrome:
-    so sanh 2 dau chuoi
-    neu khac nhau thi false
-    tien dan vao giua den khi xong</code></pre>
+        <div class="section-heading">
+            <span class="badge">Bài 4</span>
+            <h2>Chuỗi đối xứng (Palindrome)</h2>
+        </div>
+        <div class="problem-grid">
+            <div>
+                <h3>Đề bài</h3>
+                <p>Kiểm tra một chuỗi có đọc giống nhau từ trái sang phải và từ phải sang trái hay
+                    không.</p>
+                <p><strong>Nâng cao:</strong> Đếm mọi chuỗi con liên tiếp là palindrome; các vị trí khác
+                    nhau được tính là các chuỗi con khác nhau.</p>
+            </div>
+            <div>
+                <h3>Ý tưởng</h3>
+                <p>Kiểm tra bằng hai con trỏ từ hai đầu. Khi đếm, xem mỗi ký tự và mỗi khe giữa hai ký
+                    tự là một tâm, rồi mở rộng sang hai phía.</p>
+                <p class="complexity"><strong>Độ phức tạp:</strong> kiểm tra O(n); đếm O(n²) thời gian và
+                    O(1) bộ nhớ.</p>
+            </div>
+        </div>
+        <div class="result-box">
+            <h3>Kết quả chạy mẫu</h3>
+            <p><code>radar</code> là palindrome: <strong th:text="${radarPalindrome}"></strong> — các cặp
+                r/r và a/a giống nhau.</p>
+            <p><code>hello</code> là palindrome: <strong th:text="${helloPalindrome}"></strong> — ký tự đầu
+                h khác ký tự cuối o.</p>
+            <p>Chuỗi <code>aaa</code> có <strong th:text="${palindromeCount}"></strong> chuỗi con đối xứng:</p>
+            <ul class="calculation-list">
+                <li>Ba chuỗi một ký tự: <code>a</code>, <code>a</code>, <code>a</code></li>
+                <li>Hai chuỗi hai ký tự: <code>aa</code> ở vị trí 1–2 và <code>aa</code> ở vị trí 2–3</li>
+                <li>Một chuỗi ba ký tự: <code>aaa</code></li>
+            </ul>
+        </div>
     </section>
 </main>
 </body>
