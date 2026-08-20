@@ -3,6 +3,7 @@ package com.example.interview.web;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Objects;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -38,7 +39,7 @@ public class TokenController {
 
         Instant issuedAt = Instant.now();
         List<String> roles = authentication.getAuthorities().stream()
-                .map(authority -> authority.getAuthority().replaceFirst("^ROLE_", ""))
+                .map(authority -> Objects.requireNonNull(authority.getAuthority()).replaceFirst("^ROLE_", ""))
                 .toList();
 
         JwtClaimsSet claims = JwtClaimsSet.builder()
